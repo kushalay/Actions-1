@@ -1,7 +1,6 @@
 name: Generate ASCII Artwork
 
-on:
-  push:
+on: [push]
 
 jobs:
   ascii_job:
@@ -12,13 +11,18 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Cowsay Program
-        run: sudo apt-get update && sudo apt-get install cowsay -y
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cowsay
 
       - name: Execute Cowsay CMD
-        run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" > dragon.txt
+        run: |
+          /usr/games/cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" > dragon.txt
 
       - name: Test File Exists
-        run: grep -i "dragon" dragon.txt
+        run: |
+          test -f dragon.txt
+          grep -qi "dragon" dragon.txt
 
       - name: Read File
         run: cat dragon.txt
