@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Install Cowsay
         run: |
@@ -27,5 +27,5 @@ jobs:
 
       - name: Generate ASCII Artwork
         run: |
-          /usr/games/cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" > dragon.txt
-          cat dragon.txt
+          /usr/games/cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" > readme.txt
+          cat readme.txt
