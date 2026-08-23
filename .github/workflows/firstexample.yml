@@ -1,21 +1,39 @@
-name: my first workflow
+name: Generate ASCII Artwork
 
-on: push
+on:
+  push:
 
 jobs:
-  my-first-job:
+  ascii_job:
     runs-on: ubuntu-latest
-    steps:
-      - name: checkout code
-        uses: actions/checkout@v3
 
-      - name: list and read files
-        run: 
-            echo Welcome to my first workflow!
-            ls -al
-            cat README.md
-      
-      - name: generate a asc11 artwork 
-        run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
-            echo "This is a script running in my workflow."
-            echo "You can add more commands here as needed."
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Cowsay
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cowsay
+
+      - name: Check Cowsay Installation
+        run: |
+          ls -l /usr/games/cowsay
+          /usr/games/cowsay --version
+
+      - name: Generate ASCII Artwork
+        run: |
+          /usr/games/cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" > dragon.txt
+
+      - name: Test File Exists
+        run: |
+          test -f dragon.txt
+          grep -qi "dragon" dragon.txt
+
+      - name: Read File
+        run: |
+          cat dragon.txt
+
+      - name: List Repository Files
+        run: |
+          ls -al
