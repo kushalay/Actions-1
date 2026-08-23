@@ -15,7 +15,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y cowsay
-          echo "/usr/games" >> $GITHUB_PATH
+          echo "/usr/games" >> "$GITHUB_PATH"
 
       - name: Execute Cowsay CMD
         run: |
