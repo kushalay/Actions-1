@@ -15,6 +15,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install cowsay -y
 
+      - name: Verify Cowsay
+        run: |
+          which cowsay
+          ls -l /usr/games/cowsay
+
       - name: List and Read Files
         run: |
           ls -ltr
