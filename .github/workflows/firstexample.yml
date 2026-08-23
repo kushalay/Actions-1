@@ -8,12 +8,14 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v3
-        
-      - name: welcome message
-        run: echo Welcome to my first workflow!
 
-      - name: list files
-        run: ls -al
-
-      - name: read me file
-        run: cat README.md
+      - name: list and read files
+        run: 
+            echo Welcome to my first workflow!
+            ls -al
+            cat README.md
+      
+      - name: generate a asc11 artwork 
+        run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
+            echo "This is a script running in my workflow."
+            echo "You can add more commands here as needed."
