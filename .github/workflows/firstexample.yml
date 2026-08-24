@@ -11,7 +11,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Execute shell script
-        run: .github/workflows/firstexample.ymlscripts/shell.sh
-      
+        run: |
+          chmod +x .github/workflows/shell.sh
+          ./.github/workflows/shell.sh
+
       - name: Checkout Repo Files
         run: ls -al
