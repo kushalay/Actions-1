@@ -10,8 +10,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: execute shell script
-        run: ./shell.sh
+      - name: Execute shell script
+        run: |
+          chmod +x shell.sh
+          ./shell.sh
       
       - name: Checkout Repo Files
         run: ls -al
