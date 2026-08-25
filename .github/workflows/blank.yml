@@ -1,0 +1,14 @@
+name: Branch Filter Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test
+        run: echo "Workflow triggered from main branch"
