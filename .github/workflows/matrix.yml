@@ -1,0 +1,17 @@
+name: matrix configuation
+
+on: 
+  push:
+  workflow_dispatch:
+    
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest,windows-latest]
+        node: [18,20]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - run: echo "${{ matrix.os }} - Node ${{ matrix.node }}"
