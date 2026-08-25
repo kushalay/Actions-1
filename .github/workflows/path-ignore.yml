@@ -1,0 +1,14 @@
+name: Path Ignore Demo
+
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test
+        run: echo "Workflow triggered because non-doc files changed"
